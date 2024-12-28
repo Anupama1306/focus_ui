@@ -28,7 +28,7 @@ class ToggleComponent {
     this.element = _element;
 
     const elementTargetAttr = this.element.getAttribute(
-        'data-kt-toggle-target'
+      'data-kt-toggle-target'
     );
     if (elementTargetAttr) {
       this.target = document.querySelector(elementTargetAttr);
@@ -38,7 +38,7 @@ class ToggleComponent {
     const elementModeAttr = this.element.getAttribute('data-kt-toggle-mode');
     this.mode = elementModeAttr || '';
     this.attribute =
-        'data-kt-' + this.element.getAttribute('data-kt-toggle-name');
+      'data-kt-' + this.element.getAttribute('data-kt-toggle-name');
 
     // Event Handlers
     this._handlers();
@@ -126,7 +126,7 @@ class ToggleComponent {
     }
 
     return (
-        String(this.target.getAttribute(this.attribute)).toLowerCase() === 'on'
+      String(this.target.getAttribute(this.attribute)).toLowerCase() === 'on'
     );
   };
 

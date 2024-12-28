@@ -1,5 +1,5 @@
-import { Injectable } from "@angular/core";
-import { BehaviorSubject } from "rxjs";
+import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 export interface PageLink {
   title: string;
@@ -10,17 +10,17 @@ export interface PageLink {
 
 export class PageInfo {
   breadcrumbs: Array<PageLink> = [];
-  title: string = "";
+  title: string = '';
 }
 
 @Injectable({
-  providedIn: "root",
+  providedIn: 'root',
 })
 export class PageInfoService {
   public title: BehaviorSubject<string> = new BehaviorSubject<string>(
-    "Dashboard"
+    'Dashboard'
   );
-  public description: BehaviorSubject<string> = new BehaviorSubject<string>("");
+  public description: BehaviorSubject<string> = new BehaviorSubject<string>('');
   public breadcrumbs: BehaviorSubject<Array<PageLink>> = new BehaviorSubject<
     Array<PageLink>
   >([]);
@@ -34,7 +34,7 @@ export class PageInfoService {
   public updateTitle(_title: string) {
     setTimeout(() => {
       this.setTitle(_title);
-    }, 60);
+    }, 1);
   }
 
   public setDescription(_title: string) {
@@ -44,7 +44,7 @@ export class PageInfoService {
   public updateDescription(_description: string) {
     setTimeout(() => {
       this.setDescription(_description);
-    }, 60);
+    }, 1);
   }
 
   public setBreadcrumbs(_bs: Array<PageLink>) {
@@ -54,13 +54,13 @@ export class PageInfoService {
   public updateBreadcrumbs(_bs: Array<PageLink>) {
     setTimeout(() => {
       this.setBreadcrumbs(_bs);
-    }, 60);
+    }, 20);
   }
 
   public calculateTitle() {
-    const asideTitle = this.calculateTitleInMenu("kt_aside_nav_tab_menu");
-    const headerTitle = this.calculateTitleInMenu("#kt_header_menu");
-    const title = asideTitle || headerTitle || "";
+    const asideTitle = this.calculateTitleInMenu('kt_aside_nav_tab_menu');
+    const headerTitle = this.calculateTitleInMenu('#kt_header_menu');
+    const title = asideTitle || headerTitle || '';
     this.setTitle(title);
   }
 
@@ -71,15 +71,15 @@ export class PageInfoService {
     }
 
     const allActiveMenuLinks = Array.from<HTMLLinkElement>(
-      menu.querySelectorAll("a.menu-link")
-    ).filter((link) => link.classList.contains("active"));
+      menu.querySelectorAll('a.menu-link')
+    ).filter((link) => link.classList.contains('active'));
 
     if (!allActiveMenuLinks || allActiveMenuLinks.length === 0) {
       return;
     }
 
     const titleSpan = allActiveMenuLinks[0].querySelector(
-      "span.menu-title"
+      'span.menu-title'
     ) as HTMLSpanElement | null;
     if (!titleSpan) {
       return;
@@ -89,8 +89,8 @@ export class PageInfoService {
   }
 
   public calculateBreadcrumbs() {
-    const asideBc = this.calculateBreadcrumbsInMenu("kt_aside_nav_tab_menu");
-    const headerBc = this.calculateBreadcrumbsInMenu("#kt_header_menu");
+    const asideBc = this.calculateBreadcrumbsInMenu('kt_aside_nav_tab_menu');
+    const headerBc = this.calculateBreadcrumbsInMenu('#kt_header_menu');
     const bc = asideBc && asideBc.length > 0 ? asideBc : headerBc;
     if (!bc) {
       this.setBreadcrumbs([]);
@@ -109,22 +109,23 @@ export class PageInfoService {
     }
 
     const allActiveParents = Array.from<HTMLDivElement>(
-      menu.querySelectorAll("div.menu-item")
-    ).filter((p) => p.classList.contains("active"));
+      menu.querySelectorAll('div.menu-item')
+    ).filter((link) => link.classList.contains('here'));
+
     if (!allActiveParents || allActiveParents.length === 0) {
       return;
     }
 
     allActiveParents.forEach((parent) => {
       const titleSpan = parent.querySelector(
-        "span.menu-title"
+        'span.menu-title'
       ) as HTMLSpanElement | null;
       if (!titleSpan) {
         return;
       }
 
       const title = titleSpan.innerText;
-      const path = titleSpan.getAttribute("data-link");
+      const path = titleSpan.getAttribute('data-link');
       if (!path) {
         return;
       }
@@ -137,8 +138,8 @@ export class PageInfoService {
       });
       // add separator
       result.push({
-        title: "",
-        path: "",
+        title: '',
+        path: '',
         isSeparator: true,
         isActive: false,
       });

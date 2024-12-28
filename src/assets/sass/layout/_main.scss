@@ -3,7 +3,6 @@
 //
 
 
-// Body
 body {
 	background-color: var(--#{$prefix}page-bg);
 }
@@ -19,27 +18,57 @@ body {
 
 // Desktop Mode
 @include media-breakpoint-up(lg) {
-	// Fixed header mode
-	body.header-fixed  {
-		padding-top: get($header-config, height, desktop);
+	// Containers
+	.container,
+	.container-xxl,
+	.container-fluid {
+		padding: 0 get($content-spacing, desktop);
 	}
 
 	// Wrapper
 	.wrapper {
 		transition: padding-left get($aside-config, transition-speed) ease,  margin-right get($aside-config, transition-speed) ease;
 
-		// Aside default enabled and aside fixed modes
-		.aside-enabled[data-kt-sticky-aside-sticky="on"] & {
+		// Aside secondary enabled & aside fixed modes
+		.aside-secondary-enabled.aside-fixed & {
 			transition: padding-left get($aside-config, transition-speed) ease;
-			padding-left: get($aside-config, width);
+			padding-left: get($aside-config, width, desktop);
+		}
+
+		// Aside secondary enabled, aside fixed modes and aside minimize modes
+		.aside-secondary-enabled.aside-fixed[data-kt-aside-minimize="on"] & {
+			transition: padding-left get($aside-config, transition-speed) ease;
+			padding-left: get($aside-config, primary-width, desktop);
+		}
+
+		// Aside secondary disabled & aside fixed modes
+		.aside-secondary-disabled.aside-fixed & {
+			transition: padding-left get($aside-config, transition-speed) ease;
+			padding-left: get($aside-config, primary-width, desktop);			 
+		}
+
+		// Fixed header mode
+		.header-fixed[data-kt-sticky-header="on"] & {
+			padding-top: get($header-config, desktop, default, height);
 		}
 	}
 }
 
 // Tablet & mobile modes
-@include media-breakpoint-down(lg) {	
-	// Fixed header mode
-	body.header-tablet-and-mobile-fixed {
-		padding-top: get($header-config, height, tablet-and-mobile);
+@include media-breakpoint-down(lg) {
+	// Containers
+	.container,
+	.container-xxl,
+	.container-fluid {
+		max-width: none;
+		padding: 0 get($content-spacing, tablet-and-mobile);
+	}
+
+	// Wrapper
+	.wrapper {
+		// Fixed header mode
+		.header-tablet-and-mobile-fixed[data-kt-sticky-header="on"] & {
+			padding-top: get($header-config, tablet-and-mobile, fixed, height);
+		}
 	}
 }

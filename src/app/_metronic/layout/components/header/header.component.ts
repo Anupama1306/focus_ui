@@ -4,36 +4,29 @@ import {
   OnDestroy,
   OnInit,
   ViewChild,
-} from "@angular/core";
-import { NavigationCancel, NavigationEnd, Router } from "@angular/router";
-import { Subscription } from "rxjs";
-import { LayoutService } from "../../core/layout.service";
-import { MenuComponent } from "../../../kt/components";
+} from '@angular/core';
+import { NavigationCancel, NavigationEnd, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { LayoutService } from '../../core/layout.service';
+import { MenuComponent } from '../../../kt/components';
 
 @Component({
-  selector: "app-header",
-  templateUrl: "./header.component.html",
+  selector: 'app-header',
+  templateUrl: './header.component.html',
 })
 export class HeaderComponent implements OnInit, OnDestroy {
-  headerContainerCssClasses: string = "";
-  showHeaderMenu: boolean = false;
-  @ViewChild("ktPageTitle", { static: true }) ktPageTitle: ElementRef;
+  headerContainerCssClasses: string = '';
+  @ViewChild('ktPageTitle', { static: true }) ktPageTitle: ElementRef;
 
   private unsubscribe: Subscription[] = [];
 
   constructor(private layout: LayoutService, private router: Router) {
     this.routingChanges();
-    const headerMenu = this.layout.getProp("header.menu") as
-      | boolean
-      | undefined;
-    if (headerMenu) {
-      this.showHeaderMenu = true;
-    }
   }
 
   ngOnInit(): void {
     this.headerContainerCssClasses =
-      this.layout.getStringCSSClasses("headerContainer");
+      this.layout.getStringCSSClasses('headerContainer');
   }
 
   routingChanges() {

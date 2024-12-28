@@ -4,7 +4,7 @@ export interface ILayoutComponent {
 
 export interface ILoader extends ILayoutComponent {
   display?: boolean;
-  type: "default" | "spinner-message" | "spinner-logo";
+  type: 'default' | 'spinner-message' | 'spinner-logo';
 }
 
 export interface IScrollTop extends ILayoutComponent {
@@ -13,14 +13,13 @@ export interface IScrollTop extends ILayoutComponent {
 
 export interface IHeader extends ILayoutComponent {
   display: boolean;
-  width: "fixed" | "fluid";
-  left?: "menu" | "page-title";
+  width: 'fixed' | 'fluid';
+  left?: 'menu' | 'page-title';
   fixed: {
     desktop: boolean;
     tabletAndMobile: boolean;
   };
-  menu?: boolean;
-  menuIcon?: "svg" | "font";
+  menuIcon?: 'svg' | 'font';
 }
 
 export interface IMegaMenu extends ILayoutComponent {
@@ -29,45 +28,44 @@ export interface IMegaMenu extends ILayoutComponent {
 
 export interface IAside extends ILayoutComponent {
   display: boolean; // Display aside
-  theme?: "dark" | "light"; // Set aside theme(dark|light)
-  menu?: "main" | "documentation"; // Set aside menu(main|documentation)
-  fixed?: boolean; // Enable aside fixed mode
-  minimized?: boolean; // Set aside minimized by default
-  minimize?: boolean; // Allow aside minimize toggle
+  theme?: 'dark' | 'light'; // Set aside theme(dark|light)
+  menu: 'main' | 'documentation'; // Set aside menu(main|documentation)
+  fixed: boolean; // Enable aside fixed mode
+  minimized: boolean; // Set aside minimized by default
+  minimize: boolean; // Allow aside minimize toggle
   hoverable?: boolean; // Allow aside hovering when minimized
-  menuIcon?: "svg" | "font"; // Menu icon type(svg|font)
+  menuIcon: 'svg' | 'font'; // Menu icon type(svg|font)
   secondaryDisplay?: boolean; // Set true|false to show or hide Aside Secondary
 }
 
 export interface IContent extends ILayoutComponent {
-  width: "fixed" | "fluid";
-  layout: "default" | "docs";
+  width: 'fixed' | 'fluid';
+  layout: 'default' | 'docs';
 }
 
 export interface IFooter extends ILayoutComponent {
-  width: "fixed" | "fluid";
+  width: 'fixed' | 'fluid';
 }
 
 export interface ISidebar extends ILayoutComponent {
   display: boolean;
-  toggle?: boolean;
-  shown?: boolean;
-  content?: "general" | "user" | "shop";
-  bgColor?: "bg-body" | "bg-info";
-  displayFooter?: boolean;
-  displayFooterButton?: boolean;
+  toggle: boolean;
+  shown: boolean;
+  content: 'general' | 'user' | 'shop';
+  bgColor: 'bg-body' | 'bg-info';
+  displayFooter: boolean;
+  displayFooterButton: boolean;
 }
 
 export interface IToolbar extends ILayoutComponent {
   display: boolean;
-  width?: "fixed" | "fluid";
-  actions?: boolean;
-  fixed?: {
+  width: 'fixed' | 'fluid';
+  fixed: {
     desktop: boolean; // Set fixed header for desktop
     tabletAndMobileMode: boolean; // Set fixed header for talet & mobile
   };
-  layout?: "toolbar1" | "toolbar2" | "toolbar3" | "toolbar4" | "toolbar5";
-  layouts?: {
+  layout: 'toolbar1' | 'toolbar2' | 'toolbar3' | 'toolbar4' | 'toolbar5';
+  layouts: {
     toolbar1: {
       height: string;
       heightAndTabletMobileMode: string;
@@ -95,10 +93,10 @@ export interface IPageTitle extends ILayoutComponent {
   display: boolean;
   breadCrumbs: boolean;
   description: boolean;
-  layout?: "default" | "select";
-  direction?: "row" | "column";
+  layout?: 'default' | 'select';
+  direction?: 'row' | 'column';
   responsive: boolean;
-  responsiveBreakpoint: "lg" | "md" | "lg" | "300px";
+  responsiveBreakpoint: 'lg' | 'md' | 'lg' | '300px';
   responsiveTarget: string;
 }
 
@@ -109,7 +107,7 @@ export interface IMain extends ILayoutComponent {
   };
   primaryColor: string;
   darkSkinEnabled: boolean;
-  type: "blank" | "default" | "none";
+  type: 'blank' | 'default' | 'none';
   pageBgWhite?: boolean; //  Set true if page background color is white
 }
 
@@ -158,66 +156,93 @@ export interface ILayoutCSSVariables {
 
 export const DefaultLayoutConfig: ILayout = {
   main: {
-    componentName: "main",
-    type: "default",
-    primaryColor: "#009EF7",
+    componentName: 'main',
+    type: 'default',
+    primaryColor: '#04C8C8',
     darkSkinEnabled: true,
-    pageBgWhite: true,
+    pageBgWhite: false,
   },
   loader: {
-    componentName: "loader",
+    componentName: 'loader',
     display: false,
-    type: "default", // Set default|spinner-message|spinner-logo to hide or show page loader
+    type: 'default', // Set default|spinner-message|spinner-logo to hide or show page loader
   },
   scrolltop: {
-    componentName: "scroll-top",
+    componentName: 'scroll-top',
     display: true,
   },
   header: {
-    componentName: "header",
+    componentName: 'header',
     display: true, // Set true|false to show or hide Header
-    menu: true,
-    width: "fixed", // Set fixed|fluid to change width type
+    width: 'fixed', // Set fixed|fluid to change width type
     fixed: {
       desktop: true, // Set true|false to set fixed Header for desktop mode
       tabletAndMobile: true, // Set true|false to set fixed Header for tablet and mobile modes
     },
   },
   megaMenu: {
-    componentName: "mega-menu",
+    componentName: 'mega-menu',
     display: true, // Set true|false to show or hide Mega Menu
   },
   aside: {
-    componentName: "aside",
+    componentName: 'aside',
     display: true,
+    menu: 'main',
+    fixed: true,
+    secondaryDisplay: true,
+    minimized: false,
+    minimize: true,
+    menuIcon: 'svg',
   },
   content: {
-    componentName: "content",
-    width: "fixed", // Set fixed|fluid to change width
-    layout: "default",
+    componentName: 'content',
+    width: 'fixed', // Set fixed|fluid to change width
+    layout: 'default',
   },
   toolbar: {
-    componentName: "toolbar",
+    componentName: 'toolbar',
     display: true, // Display toolbar
-    actions: true,
+    width: 'fluid', // Set fixed|fluid to change width type,
+    fixed: {
+      desktop: true,
+      tabletAndMobileMode: true,
+    },
+    layout: 'toolbar1',
+    layouts: {
+      toolbar1: {
+        height: '55px',
+        heightAndTabletMobileMode: '55px',
+      },
+      toolbar2: {
+        height: '75px',
+        heightAndTabletMobileMode: '65px',
+      },
+      toolbar3: {
+        height: '55px',
+        heightAndTabletMobileMode: '55px',
+      },
+      toolbar4: {
+        height: '65px',
+        heightAndTabletMobileMode: '65px',
+      },
+      toolbar5: {
+        height: '75px',
+        heightAndTabletMobileMode: '65px',
+      },
+    },
   },
   footer: {
-    componentName: "footer",
-    width: "fixed", // Set fixed|fluid to change width type
+    componentName: 'footer',
+    width: 'fixed', // Set fixed|fluid to change width type
   },
   pageTitle: {
-    componentName: "pageTitle",
+    componentName: 'page-title',
     display: true,
     breadCrumbs: true,
-    description: true,
-    direction: "row",
-    layout: "default",
+    description: false,
+    direction: 'row',
     responsive: true,
-    responsiveBreakpoint: "lg",
-    responsiveTarget: "#kt_toolbar_container",
-  },
-  sidebar: {
-    componentName: "sidabar",
-    display: true,
+    responsiveBreakpoint: 'lg',
+    responsiveTarget: '#kt_toolbar_container',
   },
 };

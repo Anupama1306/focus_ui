@@ -10,9 +10,9 @@ export const environment = {
   apiUrl: 'api',
   appThemeName: 'Metronic',
   appPurchaseUrl: 'https://1.envato.market/EA4JP',
-  appHTMLIntegration: 'https://preview.keenthemes.com/metronic8/demo5/documentation/base/helpers/flex-layouts.html',
-  appPreviewUrl: 'https://preview.keenthemes.com/metronic8/angular/demo5/',
-  appPreviewAngularUrl: 'https://preview.keenthemes.com/metronic8/angular/demo5',
+  appHTMLIntegration: 'https://preview.keenthemes.com/metronic8/demo7/documentation/base/helpers/flex-layouts.html',
+  appPreviewUrl: 'https://preview.keenthemes.com/metronic8/angular/demo7/',
+  appPreviewAngularUrl: 'https://preview.keenthemes.com/metronic8/angular/demo7',
   appPreviewDocsUrl: 'https://preview.keenthemes.com/metronic8/angular/docs',
   appPreviewChangelogUrl: 'https://preview.keenthemes.com/metronic8/angular/docs/changelog',
   appDemos: {

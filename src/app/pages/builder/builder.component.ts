@@ -1,27 +1,23 @@
-import { Component, OnInit, ViewChild } from "@angular/core";
-import { NgForm } from "@angular/forms";
-import { LayoutService, PageInfoService } from "../../_metronic/layout";
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { LayoutService } from '../../_metronic/layout';
 
-type Tabs = "Header" | "Toolbar" | "PageTitle" | "Aside" | "Content" | "Footer";
+type Tabs = 'Header' | 'Toolbar' | 'PageTitle' | 'Aside' | 'Content' | 'Footer';
 
 @Component({
-  selector: "app-builder",
-  templateUrl: "./builder.component.html",
+  selector: 'app-builder',
+  templateUrl: './builder.component.html',
 })
 export class BuilderComponent implements OnInit {
-  activeTab: Tabs = "Header";
+  activeTab: Tabs = 'Header';
   model: any;
-  @ViewChild("form", { static: true }) form: NgForm;
+  @ViewChild('form', { static: true }) form: NgForm;
   configLoading: boolean = false;
   resetLoading: boolean = false;
-  constructor(
-    private layout: LayoutService,
-    private pageInfo: PageInfoService
-  ) {}
+  constructor(private layout: LayoutService) {}
 
   ngOnInit(): void {
     this.model = this.layout.getConfig();
-    this.pageInfo.updateBreadcrumbs([]);
   }
 
   setActiveTab(tab: Tabs) {

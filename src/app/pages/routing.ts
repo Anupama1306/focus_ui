@@ -1,57 +1,51 @@
-import { Routes } from "@angular/router";
+import { Routes } from '@angular/router';
 
 const Routing: Routes = [
   {
-    path: "dashboard",
-    redirectTo: "/apps/tickets-system",
+    path: 'dashboard',
+    loadChildren: () =>
+      import('./dashboard/dashboard.module').then((m) => m.DashboardModule),
   },
   {
-    path: "builder",
+    path: 'builder',
     loadChildren: () =>
-      import("./builder/builder.module").then((m) => m.BuilderModule),
+      import('./builder/builder.module').then((m) => m.BuilderModule),
   },
   {
-    path: "crafted/pages/profile",
+    path: 'crafted/pages/profile',
     loadChildren: () =>
-      import("../modules/profile/profile.module").then((m) => m.ProfileModule),
+      import('../modules/profile/profile.module').then((m) => m.ProfileModule),
   },
   {
-    path: "crafted/account",
+    path: 'crafted/account',
     loadChildren: () =>
-      import("../modules/account/account.module").then((m) => m.AccountModule),
+      import('../modules/account/account.module').then((m) => m.AccountModule),
   },
   {
-    path: "crafted/pages/wizards",
+    path: 'crafted/pages/wizards',
     loadChildren: () =>
-      import("../modules/wizards/wizards.module").then((m) => m.WizardsModule),
+      import('../modules/wizards/wizards.module').then((m) => m.WizardsModule),
   },
   {
-    path: "crafted/widgets",
+    path: 'crafted/widgets',
     loadChildren: () =>
-      import("../modules/widgets-examples/widgets-examples.module").then(
+      import('../modules/widgets-examples/widgets-examples.module').then(
         (m) => m.WidgetsExamplesModule
       ),
   },
   {
-    path: "apps/chat",
+    path: 'apps/chat',
     loadChildren: () =>
-      import("../modules/apps/chat/chat.module").then((m) => m.ChatModule),
+      import('../modules/apps/chat/chat.module').then((m) => m.ChatModule),
   },
   {
-    path: "apps/tickets-system",
-    loadChildren: () =>
-      import("../modules/apps/tickets-system/tickets-system.module").then(
-        (m) => m.TicketsSystemModule
-      ),
+    path: '',
+    redirectTo: '/dashboard',
+    pathMatch: 'full',
   },
   {
-    path: "",
-    redirectTo: "/apps/tickets-system/main",
-    pathMatch: "full",
-  },
-  {
-    path: "**",
-    redirectTo: "error/404",
+    path: '**',
+    redirectTo: 'error/404',
   },
 ];
 

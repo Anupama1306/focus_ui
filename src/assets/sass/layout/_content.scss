@@ -5,10 +5,13 @@
 // Desktop mode
 @include media-breakpoint-up(lg) {
 	.content {
-		// Aside enabled mode
-		.aside-enabled & {
-			padding-left: get($content-spacing, desktop);
-			border-left: 1px solid var(--#{$prefix}gray-200);
-		}
+		padding: 0;	
+	}
+}
+
+// Tablet & mobile modes
+@include media-breakpoint-down(lg) {
+	.content {
+		padding: get($content-spacing, tablet-and-mobile) 0;
 	}
 }
