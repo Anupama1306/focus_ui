@@ -5,7 +5,7 @@ import { UserModel } from '../../models/user.model';
 import { environment } from '../../../../../environments/environment';
 import { AuthModel } from '../../models/auth.model';
 
-const API_USERS_URL = `${environment.apiUrl}/auth`;
+const API_USERS_URL = `${environment.apiUrl}/stashook`;
 
 @Injectable({
   providedIn: 'root',
@@ -14,10 +14,17 @@ export class AuthHTTPService {
   constructor(private http: HttpClient) {}
 
   // public methods
-  login(email: string, password: string): Observable<any> {
-    return this.http.post<AuthModel>(`${API_USERS_URL}/login`, {
-      email,
-      password,
+  login(username: string, password: string): Observable<any> {
+    //let body = '{"username":"'+username+',"password":"'+password+'"}';
+    let jsonBody ={
+      "username":username,
+      "password":password
+    };
+    console.log("jsonBody",jsonBody);
+    //return this.http.post<AuthModel>(`${API_USERS_URL}/login`, {"username":+username,"password":password},{ headers:{
+      return this.http.post<AuthModel>(`${API_USERS_URL}/login`, jsonBody,{ headers:{
+      'Content-Type':'application/json',
+     }
     });
   }
 

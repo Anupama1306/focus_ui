@@ -5,6 +5,7 @@ import { first } from 'rxjs/operators';
 import { UserModel } from '../../models/user.model';
 import { AuthService } from '../../services/auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
+export type UserType = UserModel | undefined;
 
 @Component({
   selector: 'app-login',
@@ -12,10 +13,9 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit, OnDestroy {
-  // KeenThemes mock, change it to:
   defaultAuth: any = {
-    email: 'admin@demo.com',
-    password: 'demo',
+    userId: '',
+    password: '',
   };
   loginForm: FormGroup;
   hasError: boolean;
@@ -52,11 +52,10 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   initForm() {
     this.loginForm = this.fb.group({
-      email: [
-        this.defaultAuth.email,
+      userId: [
+        this.defaultAuth.userId,
         Validators.compose([
           Validators.required,
-          Validators.email,
           Validators.minLength(3),
           Validators.maxLength(320), // https://stackoverflow.com/questions/386294/what-is-the-maximum-length-of-a-valid-email-address
         ]),
@@ -75,9 +74,9 @@ export class LoginComponent implements OnInit, OnDestroy {
   submit() {
     this.hasError = false;
     const loginSubscr = this.authService
-      .login(this.f.email.value, this.f.password.value)
+      .login(this.f.userId.value, this.f.password.value)
       .pipe(first())
-      .subscribe((user: UserModel | undefined) => {
+      .subscribe((user: UserType) => {
         if (user) {
           this.router.navigate([this.returnUrl]);
         } else {
