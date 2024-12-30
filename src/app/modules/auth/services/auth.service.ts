@@ -7,7 +7,7 @@ import { AuthHTTPService } from './auth-http';
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
 
-export type UserType = UserModel | undefined;
+export type UserType = AuthModel | undefined;
 
 @Injectable({
   providedIn: 'root',
@@ -44,12 +44,14 @@ export class AuthService implements OnDestroy {
   }
 
   // public methods
-  login(email: string, password: string): Observable<UserType> {
+  login(email: string, password: string): Observable<any> {
     this.isLoadingSubject.next(true);
     return this.authHttpService.login(email, password).pipe(
-      map((auth: AuthModel) => {
+      map((auth: UserType) => {
+        
         const result = this.setAuthFromLocalStorage(auth);
-        return result;
+        console.log("auth--",auth);
+        return auth;
       }),
       switchMap(() => this.getUserByToken()),
       catchError((err) => {
@@ -68,11 +70,12 @@ export class AuthService implements OnDestroy {
   }
 
   getUserByToken(): Observable<UserType> {
+    
     const auth = this.getAuthFromLocalStorage();
     if (!auth || !auth.authToken) {
       return of(undefined);
     }
-
+    console.log("getUserByToken", auth)
     this.isLoadingSubject.next(true);
     return this.authHttpService.getUserByToken(auth.authToken).pipe(
       map((user: UserType) => {
@@ -111,8 +114,9 @@ export class AuthService implements OnDestroy {
   }
 
   // private methods
-  private setAuthFromLocalStorage(auth: AuthModel): boolean {
+  private setAuthFromLocalStorage(auth: UserType): boolean {
     // store auth authToken/refreshToken/epiresIn in local storage to keep user logged in between page refreshes
+    console.log("SetAuth",auth);
     if (auth && auth.authToken) {
       localStorage.setItem(this.authLocalStorageToken, JSON.stringify(auth));
       return true;

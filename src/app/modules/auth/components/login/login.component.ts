@@ -5,7 +5,8 @@ import { first } from 'rxjs/operators';
 import { UserModel } from '../../models/user.model';
 import { AuthService } from '../../services/auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
-export type UserType = UserModel | undefined;
+import { AuthModel } from '../../models/auth.model';
+export type UserType = AuthModel | undefined;
 
 @Component({
   selector: 'app-login',
@@ -42,7 +43,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.initForm();
     // get return url from route parameters or default to '/'
     this.returnUrl =
-      this.route.snapshot.queryParams['returnUrl'.toString()] || '/';
+      this.route.snapshot.queryParams['returnUrl'.toString()] || '/dashboard';
   }
 
   // convenience getter for easy access to form fields
@@ -70,6 +71,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       ],
     });
   }
+  
 
   submit() {
     this.hasError = false;
@@ -77,6 +79,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       .login(this.f.userId.value, this.f.password.value)
       .pipe(first())
       .subscribe((user: UserType) => {
+        console.log(this.returnUrl, "user", user);
         if (user) {
           this.router.navigate([this.returnUrl]);
         } else {
