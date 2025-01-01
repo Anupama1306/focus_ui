@@ -2,6 +2,7 @@ import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { KTHelpers } from 'src/app/_metronic/kt';
 import { ProjectsTabComponent } from '../projects-tab.component';
+import { CustomerTabComponent } from '../customer/customer-tab.component';
 
 @Component({
   selector: 'app-search',
@@ -11,11 +12,11 @@ export class SearchComponent implements OnInit {
   showLoading: boolean = false;
   searchText = new BehaviorSubject<string>('');
 
-  constructor(private cdr: ChangeDetectorRef,private projectsTabComponent: ProjectsTabComponent) {}
+  constructor(private cdr: ChangeDetectorRef,private customerTabComponent: CustomerTabComponent) {}
 
   ngOnInit(): void {
     // KTHelpers.menuReinitialization()
-    this.projectsTabComponent.searchCustomers("");
+    this.customerTabComponent.searchCustomers("");
   }
 
   updateSearchText(input: string) {
@@ -25,7 +26,7 @@ export class SearchComponent implements OnInit {
     this.cdr.detectChanges();
     if (input && input.length > 2) {
       // KTHelpers.menuReinitialization();
-      this.projectsTabComponent.searchCustomers(input);
+      this.customerTabComponent.searchCustomers(input);
       // alert("Ok"+input);
     }
     setTimeout(() => {

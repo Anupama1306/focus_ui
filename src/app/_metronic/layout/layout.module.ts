@@ -35,6 +35,7 @@ import { AuthorsTabComponent } from './components/aside/tabs/authors-tab/authors
 import { MenuTabComponent } from './components/aside/tabs/menu-tab/menu-tab.component';
 import { NotificationsTabComponent } from './components/aside/tabs/notifications-tab/notifications-tab.component';
 import { ProjectsTabComponent } from './components/aside/tabs/projects-tab/projects-tab.component';
+import { CustomerTabComponent } from './components/aside/tabs/projects-tab/customer/customer-tab.component';
 import { SubscriptionsTabComponent } from './components/aside/tabs/subscriptions-tab/subscriptions-tab.component';
 import { TasksTabComponent } from './components/aside/tabs/tasks-tab/tasks-tab.component';
 import { SearchComponent } from './components/aside/tabs/projects-tab/search/search.component';
@@ -70,6 +71,7 @@ const routes: Routes = [
     MenuTabComponent,
     NotificationsTabComponent,
     ProjectsTabComponent,
+    CustomerTabComponent,
     SubscriptionsTabComponent,
     TasksTabComponent,
     SearchComponent,

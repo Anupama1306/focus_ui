@@ -4,9 +4,13 @@
   data-kt-scroll-dependencies="#kt_aside_secondary_footer" data-kt-scroll-offset="0px">
   <div class="tab-content">
 
-    <app-projects-tab class="tab-pane fade" id="kt_aside_nav_tab_projects" role="tabpanel"
+    <!-- <app-projects-tab class="tab-pane fade" id="kt_aside_nav_tab_projects" role="tabpanel"
       [ngClass]="{'active show': activeTab.link === 'customer'}">
-    </app-projects-tab>
+    </app-projects-tab> -->
+
+    <app-customer-tab class="tab-pane fade" id="kt_aside_nav_tab_projects" role="tabpanel"
+    [ngClass]="{'active show': activeTab.link === 'customer'}">
+  </app-customer-tab>
 
     <app-menu-tab class="tab-pane fade" id="kt_aside_nav_tab_menu" role="tabpanel"
       [ngClass]="{'active show': activeTab.link === 'incident'}"></app-menu-tab>
