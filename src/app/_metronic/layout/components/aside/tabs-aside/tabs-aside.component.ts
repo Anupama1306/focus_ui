@@ -10,12 +10,12 @@ export class TabsAsideComponent implements OnInit {
   @Input() activeTab: Tab = tabs[0];
   @Input() setActiveTab: (
     activeTabLink:
-      | 'projects'
-      | 'menu'
-      | 'subscription'
-      | 'tasks'
-      | 'notifications'
-      | 'authors'
+      | 'customer'
+      | 'incident'
+      | 'tickets'
+      | 'myleave'
+      | 'timesheet'
+      | 'reports'
   ) => void;
   allTabs: ReadonlyArray<Tab> = [];
   constructor() {}

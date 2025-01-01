@@ -7,7 +7,7 @@ import { AuthHTTPService } from './auth-http';
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
 
-export type UserType = AuthModel | undefined;
+export type UserType = UserModel| undefined;
 
 @Injectable({
   providedIn: 'root',

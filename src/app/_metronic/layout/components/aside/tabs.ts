@@ -1,51 +1,51 @@
 type Tab = {
   link:
-    | 'projects'
-    | 'menu'
-    | 'subscription'
-    | 'tasks'
-    | 'notifications'
-    | 'authors';
+    | 'customer'
+      | 'incident'
+      | 'tickets'
+      | 'myleave'
+      | 'timesheet'
+      | 'reports';
   icon: string;
   tooltip:
-    | 'Projects'
-    | 'Menu'
-    | 'Subscription'
-    | 'Tasks'
-    | 'Notifications'
-    | 'Authors';
+    | 'Customer'
+    | 'Incident'
+    | 'Tickets'
+    | 'Myleave'
+    | 'Timesheet'
+    | 'Reports';
 };
 
 const tabs: ReadonlyArray<Tab> = [
   {
-    link: 'projects',
+    link: 'customer',
     icon: './assets/media/icons/duotune/general/gen025.svg',
-    tooltip: 'Projects',
+    tooltip: 'Customer',
   },
   {
-    link: 'menu',
+    link: 'incident',
     icon: './assets/media/icons/duotune/finance/fin006.svg',
-    tooltip: 'Menu',
+    tooltip: 'Incident',
   },
   {
-    link: 'subscription',
+    link: 'tickets',
     icon: './assets/media/icons/duotune/general/gen032.svg',
-    tooltip: 'Subscription',
+    tooltip: 'Tickets',
   },
   {
-    link: 'tasks',
+    link: 'myleave',
     icon: './assets/media/icons/duotune/general/gen048.svg',
-    tooltip: 'Tasks',
+    tooltip: 'Myleave',
   },
   {
-    link: 'notifications',
+    link: 'timesheet',
     icon: './assets/media/icons/duotune/abstract/abs027.svg',
-    tooltip: 'Notifications',
+    tooltip: 'Timesheet',
   },
   {
-    link: 'authors',
+    link: 'reports',
     icon: './assets/media/icons/duotune/files/fil005.svg',
-    tooltip: 'Authors',
+    tooltip: 'Reports',
   },
 ];
 

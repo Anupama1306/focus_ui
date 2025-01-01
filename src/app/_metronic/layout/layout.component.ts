@@ -16,8 +16,8 @@ import { LayoutInitService } from './core/layout-init.service';
 export class LayoutComponent implements OnInit, AfterViewInit {
   // Public variables
   selfLayout = 'default';
-  asideSelfDisplay: true;
-  asideMenuStatic: true;
+  asideSelfDisplay: false;
+  asideMenuStatic: false;
   contentClasses = '';
   contentContainerClasses = '';
   toolbarDisplay = true;

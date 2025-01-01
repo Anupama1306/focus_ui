@@ -15,8 +15,8 @@ export type UserType = AuthModel | undefined;
 })
 export class LoginComponent implements OnInit, OnDestroy {
   defaultAuth: any = {
-    userId: '',
-    password: '',
+    userId: '15002',
+    password: 'Test@1234',
   };
   loginForm: FormGroup;
   hasError: boolean;
