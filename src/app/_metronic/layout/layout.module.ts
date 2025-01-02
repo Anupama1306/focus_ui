@@ -33,12 +33,14 @@ import {
 import { EngagesComponent } from '../partials/layout/engages/engages.component';
 import { AuthorsTabComponent } from './components/aside/tabs/authors-tab/authors-tab.component';
 import { MenuTabComponent } from './components/aside/tabs/menu-tab/menu-tab.component';
+import { IncidentTabComponent } from './components/aside/tabs/incident-tab/incident-tab.component';
 import { NotificationsTabComponent } from './components/aside/tabs/notifications-tab/notifications-tab.component';
 import { ProjectsTabComponent } from './components/aside/tabs/projects-tab/projects-tab.component';
 import { CustomerTabComponent } from './components/aside/tabs/projects-tab/customer/customer-tab.component';
 import { SubscriptionsTabComponent } from './components/aside/tabs/subscriptions-tab/subscriptions-tab.component';
 import { TasksTabComponent } from './components/aside/tabs/tasks-tab/tasks-tab.component';
 import { SearchComponent } from './components/aside/tabs/projects-tab/search/search.component';
+// import { SearchIncidentComponent } from '../kt/components/SearchIncidentComponent';
 import { FormsModule } from '@angular/forms';
 import { ThemeModeModule } from '../partials/layout/theme-mode-switcher/theme-mode.module';
 import { SharedModule } from '../shared/shared.module';
@@ -69,12 +71,14 @@ const routes: Routes = [
     TabsAsideInnerComponent,
     AuthorsTabComponent,
     MenuTabComponent,
+    IncidentTabComponent,
     NotificationsTabComponent,
     ProjectsTabComponent,
     CustomerTabComponent,
     SubscriptionsTabComponent,
     TasksTabComponent,
     SearchComponent,
+    // SearchIncidentComponent
   ],
   imports: [
     CommonModule,

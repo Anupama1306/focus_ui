@@ -12,8 +12,11 @@
     [ngClass]="{'active show': activeTab.link === 'customer'}">
   </app-customer-tab>
 
-    <app-menu-tab class="tab-pane fade" id="kt_aside_nav_tab_menu" role="tabpanel"
-      [ngClass]="{'active show': activeTab.link === 'incident'}"></app-menu-tab>
+    <!-- <app-menu-tab class="tab-pane fade" id="kt_aside_nav_tab_menu" role="tabpanel"
+      [ngClass]="{'active show': activeTab.link === 'incident'}"></app-menu-tab> -->
+
+      <app-incident-tab class="tab-pane fade" id="kt_aside_nav_tab_menu" role="tabpanel"
+      [ngClass]="{'active show': activeTab.link === 'incident'}"></app-incident-tab>
 
     <app-subscriptions-tab class="tab-pane fade" id="kt_aside_nav_tab_subscription" role="tabpanel"
       [ngClass]="{'active show': activeTab.link === 'tickets'}">
