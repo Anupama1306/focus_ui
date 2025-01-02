@@ -28,7 +28,7 @@
     <!--end::Heading-->
 
     <!--begin::Items-->
-    <div class="mb-10" *ngFor="let item of allCustomers">
+    <div class="mb-10" *ngFor="let item of allIncident">
       <!--begin::Item-->
       <span class="custom-list d-flex align-items-center px-5 py-4">
         <!--begin::Symbol-->
@@ -43,17 +43,20 @@
         <div class="d-flex flex-column flex-grow-1">
           <!--begin::Title-->
           <h5 class="custom-list-title fw-bold text-gray-800 mb-1">
-            {{item.customerName}}
+            {{item.incidentId}}
           </h5>
           <!--end::Title-->
 
           <!--begin::Link-->
           <span class="text-gray-500 fw-bold">
-            {{item.mobileNumber}}
+            {{item.supportType}}
           </span>
           <!--end::Link-->
         </div>
-        <!--begin::Description-->
+        <br>
+        <p class="text-gray-500 fw-bold">
+          {{item.cookBookName}}</p>
+          <!--begin::Description-->
       </span>
       <!--end::Item-->
     </div>
