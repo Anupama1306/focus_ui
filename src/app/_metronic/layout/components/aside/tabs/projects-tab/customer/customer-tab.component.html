@@ -25,7 +25,17 @@
     <!--begin::Heading-->
     <h1 class="text-gray-800 fw-bold mb-6 mx-5">Customers</h1>
     <!--end::Heading-->
-
+    <div class="mb-10">
+      <a class="btn btn-flex flex-center bg-body btn-color-gray-700 btn-active-color-primary w-40px w-md-auto h-40px px-0 px-md-6"
+      data-bs-toggle="modal" (click)="openModal()" data-bs-target="#kt_modal_invite_friends ">
+      <span [inlineSVG]="'./assets/media/icons/duotune/arrows/arr075.svg'"
+        class="svg-icon svg-icon-2 svg-icon-primary me-0 me-md-2"></span>
+      <span class="d-none d-md-inline">New Customer</span>
+    </a>
+    </div>
+    <app-modal #modal [modalConfig]="modalConfig">
+      Modal body html
+      </app-modal>
     <!--begin::Items-->
     <div class="mb-10" *ngFor="let item of allCustomers">
       <!--begin::Item-->
