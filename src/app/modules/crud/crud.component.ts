@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { NgbModal, NgbModalOptions, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { SwalComponent } from '@sweetalert2/ngx-sweetalert2';
 import { DataTableDirective } from 'angular-datatables';
+import { Api, Config } from 'datatables.net';
 import { fromEvent } from 'rxjs';
 import { debounceTime, map } from 'rxjs/operators';
 import { SweetAlertOptions } from 'sweetalert2';
@@ -14,7 +15,7 @@ import { SweetAlertOptions } from 'sweetalert2';
 })
 export class CrudComponent implements OnInit, AfterViewInit, OnDestroy {
 
-  @Input() datatableConfig: DataTables.Settings = {};
+  @Input() datatableConfig: Config = {};
 
   @Input() route: string = '/';
 
@@ -23,11 +24,10 @@ export class CrudComponent implements OnInit, AfterViewInit, OnDestroy {
 
   @Input() modal: TemplateRef<any>;
 
-  @Output() deleteEvent = new EventEmitter<number>();
-  @Output() editEvent = new EventEmitter<number>();
+
   @Output() createEvent = new EventEmitter<boolean>();
 
-  dtOptions: DataTables.Settings = {};
+  dtOptions: Config = {};
 
   @ViewChild(DataTableDirective, { static: false })
   private datatableElement: DataTableDirective;
@@ -68,7 +68,7 @@ export class CrudComponent implements OnInit, AfterViewInit, OnDestroy {
     if (this.reload) {
       this.reload.subscribe(data => {
         this.modalService.dismissAll();
-        this.datatableElement.dtInstance.then((dtInstance: DataTables.Api) => dtInstance.ajax.reload());
+        this.datatableElement.dtInstance.then((dtInstance: Api) => dtInstance.ajax.reload());
       });
     }
   }
@@ -91,17 +91,7 @@ export class CrudComponent implements OnInit, AfterViewInit, OnDestroy {
             </i>
           </button>`;
 
-        const buttons = [];
-
-        if (this.editEvent.observed) {
-          buttons.push(editButton);
-        }
-
-        if (this.deleteEvent.observed) {
-          buttons.push(deleteButton);
-        }
-
-        return buttons.join('');
+    
       },
     };
 
@@ -127,18 +117,7 @@ export class CrudComponent implements OnInit, AfterViewInit, OnDestroy {
             this.modalRef = this.modalService.open(this.modal, this.modalConfig);
             break;
 
-          case 'edit':
-            this.editEvent.emit(this.idInAction);
-            this.modalRef = this.modalService.open(this.modal, this.modalConfig);
-            break;
-
-          case 'delete':
-            this.deleteSwal.fire().then((clicked) => {
-              if (clicked.isConfirmed) {
-                this.successSwal.fire();
-              }
-            });
-            break;
+         
         }
       }
     });
@@ -155,7 +134,7 @@ export class CrudComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   triggerDelete() {
-    this.deleteEvent.emit(this.idInAction);
+    //this.deleteEvent.emit(this.idInAction);
   }
 
   triggerFilter() {
@@ -172,7 +151,7 @@ export class CrudComponent implements OnInit, AfterViewInit, OnDestroy {
       )
       .subscribe(({ action, value }) => {
         if (action === 'filter') {
-          this.datatableElement.dtInstance.then((dtInstance: DataTables.Api) => dtInstance.search(value).draw());
+          this.datatableElement.dtInstance.then((dtInstance: Api) => dtInstance.search(value).draw());
         }
       });
   }

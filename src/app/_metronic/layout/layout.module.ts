@@ -44,6 +44,7 @@ import { SearchComponent } from './components/aside/tabs/projects-tab/search/sea
 import { FormsModule } from '@angular/forms';
 import { ThemeModeModule } from '../partials/layout/theme-mode-switcher/theme-mode.module';
 import { SharedModule } from '../shared/shared.module';
+import { CrudModule } from "../../modules/crud/crud.module";
 
 const routes: Routes = [
   {
@@ -97,7 +98,8 @@ const routes: Routes = [
     FormsModule,
     ThemeModeModule,
     SharedModule,
-  ],
+    CrudModule
+],
   exports: [RouterModule],
 })
 export class LayoutModule {}
