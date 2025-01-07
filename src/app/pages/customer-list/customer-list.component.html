@@ -1,32 +1,122 @@
 
+  <div class="card-header border-0 pt-5">
+<div style="visibility: hidden;">  {{allCustomers.length}} </div>
 
-<div class="m-0">
-<h3>Customer List</h3>
-{{allCustomers.length}}
-<table>
-  <thead>
-    <tr>
-      <th class="align-middle" rowspan="2">Customer ID</th>
+  <h3 class="card-title align-items-start flex-column">
+    <span class="card-label fw-bolder fs-3 mb-1">Customer Members Statistics</span>
+    <span class="text-muted mt-1 fw-bold fs-7">Over 50 members</span>
+  </h3>
+  <div
+    class="card-toolbar"
+    data-bs-toggle="tooltip"
+    data-bs-placement="top"
+    data-bs-trigger="hover"
+    title="Click to add a user"
+  >
+    <a href="#" class="btn btn-sm btn-light-primary">
+      <!-- <app-keenicon name="plus" class="fs-3"></app-keenicon> -->
+      New Member
+    </a>
+  </div>
+  <div class="card-body py-3">
+    <!-- begin::Table container -->
+    <div class="table-responsive">
+      <!-- begin::Table -->
+      <table
+        class="table table-row-dashed table-row-gray-300 align-middle gs-0 gy-4"
+      >
+        <!-- begin::Table head -->
+        <thead>
+          <tr class="fw-bolder text-muted">
+            <th class="w-25px">
+              <div
+                class="
+                  form-check form-check-sm form-check-custom form-check-solid
+                "
+              >
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  value="1"
+                  data-kt-check="true"
+                  data-kt-check-target=".widget-9-check"
+                />
+              </div>
+            </th>
+            <!-- <th class="min-w-150px">Customer ID</th> -->
+            <th class="min-w-140px">Customer Name</th>
+            <th class="min-w-120px">Mobile No</th>
+            <th class="min-w-120px">Address</th>
+            <th class="min-w-100px">Actions</th>
+          </tr>
+        </thead>
 
-      <th class="align-middle" rowspan="2">Customer Name</th>
-      <th class="align-middle" rowspan="2">Mobile No</th>
+        <!-- end::Table head -->
+      <!-- begin::Table body -->
+      <tbody *ngFor="let item of allCustomers">
 
-      <th class="align-middle" rowspan="2">Address</th>
+          <td>
+            <div
+              class="
+                form-check form-check-sm form-check-custom form-check-solid
+              "
+            >
+              <input
+                class="form-check-input widget-9-check"
+                type="checkbox"
+                value="1"
+              />
+            </div>
+          </td>
+          <td>
+            <div class="d-flex align-items-center">
+              <div class="symbol symbol-45px me-5">
+                <img src="./assets/media/avatars/300-14.jpg" alt="" />
+                <!-- <img src="./assets/media/avatars/300-2.jpg" alt="" /> -->
+              </div>
+              <div class="d-flex justify-content-start flex-column">
+                <a href="#" class="text-gray-900 fw-bolder text-hover-primary fs-6">
+                  {{item.customerName}}
+                </a>
+                <!-- <span class="text-muted fw-bold text-muted d-block fs-7">
+                  HTML, JS, ReactJS
+                </span> -->
+              </div>
+            </div>
+          </td>
 
-    </tr>
-      </thead>
-<tbody>
-  <tr *ngFor="let item of allCustomers">
-    <td>{{item.customerId}}
-      <td>{{item.customerName}}
-        <td >{{item.mobileNumber}}
-          <td >{{item.address}}
+          <td>
+            <a
+              href="#"
+              class="text-gray-900 fw-bolder text-hover-primary d-block fs-6"
+            >
+              {{item.mobileNumber}}
+            </a>
+            <!-- <span class="text-muted fw-bold text-muted d-block fs-7">
+              Web, UI/UX Design
+            </span> -->
+          </td>
+          <td>
+            <a
+              href="#"
+              class="text-gray-900 fw-bolder text-hover-primary d-block fs-6"
+            >
+              {{item.address}}
+            </a>
+            <!-- <span class="text-muted fw-bold text-muted d-block fs-7">
+              Web, UI/UX Design
+            </span> -->
+          </td>
+            <td>
+            <a href="#">Edit</a>
+            <a href="#"> Del</a>
+            </td>
+      </table>
+  </div>
 
-      </tr>
-  </tbody>
 
-    </table>
-    </div>
+<!-- <h3>Customer List</h3> -->
+
 
 
 

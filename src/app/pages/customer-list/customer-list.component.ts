@@ -1,3 +1,4 @@
+import { SearchComponent } from './../../_metronic/layout/components/aside/tabs/projects-tab/search/search.component';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Alert } from 'bootstrap';
@@ -7,6 +8,7 @@ import { Customer } from 'src/app/modules/auth/models/customer.model';
 import { CustomerService } from 'src/app/modules/services/customer.service';
 import { CommonModule } from '@angular/common';
 import { ModalComponent, ModalConfig } from 'src/app/_metronic/partials';
+// import { SearchComponent } from "../../_metronic/shared/shared.module";
 @Component({
   selector: 'app-customer-list',
   standalone: true,
@@ -39,7 +41,7 @@ export class CustomerListComponent implements OnInit{
     }
 
     ngOnInit(): void {
-      alert("cHheck");
+      // alert("cHheck");
 this.searchCustomers("");
     }
     openModal(){
