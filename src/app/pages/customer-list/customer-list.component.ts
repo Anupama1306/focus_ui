@@ -8,11 +8,13 @@ import { Customer } from 'src/app/modules/auth/models/customer.model';
 import { CustomerService } from 'src/app/modules/services/customer.service';
 import { CommonModule } from '@angular/common';
 import { ModalComponent, ModalConfig } from 'src/app/_metronic/partials';
-// import { SearchComponent } from "../../_metronic/shared/shared.module";
+import { SharedModule } from "../../_metronic/shared/shared.module";
+
+// D:\2025\newprojects\focus_ui\src\app\pages\customer-list\customer-list.component.ts
 @Component({
   selector: 'app-customer-list',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, SharedModule],
   templateUrl: './customer-list.component.html',
   // styleUrl: './customer-list.component.scss'
 })

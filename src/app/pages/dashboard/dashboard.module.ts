@@ -6,12 +6,17 @@ import { CustomerListComponent } from '../customer-list/customer-list.component'
 // import { CustomerListComponent } from "../customer-list/customer-list.component";
 import { SearchComponent } from 'src/app/_metronic/kt/components';
 import { SearchResultInnerComponent } from 'src/app/_metronic/partials/layout/extras/dropdown-inner/search-result-inner/search-result-inner.component';
+// import { KeeniconComponent } from 'src/app/_metronic/shared/keenicon/keenicon.component';
+import { SharedModule } from 'src/app/_metronic/shared/shared.module';
+import { IncidentListComponent } from "../incident-list/incident-list.component";
 
+// KeeniconComponent
+// D:\2025\newprojects\focus_ui\src\app\_metronic\shared\shared.module.ts
 @NgModule({
   declarations: [DashboardComponent,],
   imports: [
     CommonModule,
-
+    SharedModule,
     CustomerListComponent,
     RouterModule.forChild([
         {
@@ -19,15 +24,15 @@ import { SearchResultInnerComponent } from 'src/app/_metronic/partials/layout/ex
             component: DashboardComponent,
         },
         {
-          path:'',
-          component:SearchComponent
+            path: '',
+            component: SearchComponent
         },
         {
-          path:'',
-          component:SearchResultInnerComponent
+            path: '',
+            component: SearchResultInnerComponent
         }
     ]),
-    // CustomerListComponent
+    IncidentListComponent
 ],
 })
 export class DashboardModule {}

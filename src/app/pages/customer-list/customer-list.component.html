@@ -1,18 +1,13 @@
+<div style="visibility: hidden;"> {{allCustomers.length}} </div>
+<div class="card-header border-0 pt-5">
 
-  <div class="card-header border-0 pt-5">
-<div style="visibility: hidden;">  {{allCustomers.length}} </div>
 
   <h3 class="card-title align-items-start flex-column">
     <span class="card-label fw-bolder fs-3 mb-1">Customer Members Statistics</span>
     <span class="text-muted mt-1 fw-bold fs-7">Over 50 members</span>
   </h3>
-  <div
-    class="card-toolbar"
-    data-bs-toggle="tooltip"
-    data-bs-placement="top"
-    data-bs-trigger="hover"
-    title="Click to add a user"
-  >
+  <div class="card-toolbar" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover"
+    title="Click to add a user">
     <a href="#" class="btn btn-sm btn-light-primary">
       <!-- <app-keenicon name="plus" class="fs-3"></app-keenicon> -->
       New Member
@@ -22,25 +17,16 @@
     <!-- begin::Table container -->
     <div class="table-responsive">
       <!-- begin::Table -->
-      <table
-        class="table table-row-dashed table-row-gray-300 align-middle gs-0 gy-4"
-      >
+      <table class="table table-row-dashed table-row-gray-300 align-middle gs-0 gy-4">
         <!-- begin::Table head -->
         <thead>
           <tr class="fw-bolder text-muted">
             <th class="w-25px">
-              <div
-                class="
+              <div class="
                   form-check form-check-sm form-check-custom form-check-solid
-                "
-              >
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  value="1"
-                  data-kt-check="true"
-                  data-kt-check-target=".widget-9-check"
-                />
+                ">
+                <input class="form-check-input" type="checkbox" value="1" data-kt-check="true"
+                  data-kt-check-target=".widget-9-check" />
               </div>
             </th>
             <!-- <th class="min-w-150px">Customer ID</th> -->
@@ -52,108 +38,110 @@
         </thead>
 
         <!-- end::Table head -->
-      <!-- begin::Table body -->
-      <tbody *ngFor="let item of allCustomers">
-
-          <td>
-            <div
-              class="
+        <!-- begin::Table body -->
+        <tbody>
+          <tr *ngFor="let item of allCustomers">
+            <td>
+              <div class="
                 form-check form-check-sm form-check-custom form-check-solid
-              "
-            >
-              <input
-                class="form-check-input widget-9-check"
-                type="checkbox"
-                value="1"
-              />
-            </div>
-          </td>
-          <td>
-            <div class="d-flex align-items-center">
-              <div class="symbol symbol-45px me-5">
-                <img src="./assets/media/avatars/300-14.jpg" alt="" />
-                <!-- <img src="./assets/media/avatars/300-2.jpg" alt="" /> -->
+              ">
+                <input class="form-check-input widget-9-check" type="checkbox" value="1" />
               </div>
-              <div class="d-flex justify-content-start flex-column">
-                <a href="#" class="text-gray-900 fw-bolder text-hover-primary fs-6">
-                  {{item.customerName}}
-                </a>
-                <!-- <span class="text-muted fw-bold text-muted d-block fs-7">
+            </td>
+            <td>
+              <div class="d-flex align-items-center">
+                <div class="symbol symbol-45px me-5">
+                  <img src="./assets/media/avatars/300-14.jpg" alt="" />
+                  <!-- <img src="./assets/media/avatars/300-2.jpg" alt="" /> -->
+                </div>
+                <div class="d-flex justify-content-start flex-column">
+                  <a href="#" class="text-gray-900 fw-bolder text-hover-primary fs-6">
+                    {{item.customerName}}
+                  </a>
+                  <!-- <span class="text-muted fw-bold text-muted d-block fs-7">
                   HTML, JS, ReactJS
                 </span> -->
+                </div>
               </div>
-            </div>
-          </td>
-
-          <td>
-            <a
-              href="#"
-              class="text-gray-900 fw-bolder text-hover-primary d-block fs-6"
-            >
-              {{item.mobileNumber}}
-            </a>
-            <!-- <span class="text-muted fw-bold text-muted d-block fs-7">
-              Web, UI/UX Design
-            </span> -->
-          </td>
-          <td>
-            <a
-              href="#"
-              class="text-gray-900 fw-bolder text-hover-primary d-block fs-6"
-            >
-              {{item.address}}
-            </a>
-            <!-- <span class="text-muted fw-bold text-muted d-block fs-7">
-              Web, UI/UX Design
-            </span> -->
-          </td>
-            <td>
-            <a href="#">Edit</a>
-            <a href="#"> Del</a>
             </td>
+
+            <td>
+              <a href="#" class="text-gray-900 fw-bolder text-hover-primary d-block fs-6">
+                {{item.mobileNumber}}
+              </a>
+              <!-- <span class="text-muted fw-bold text-muted d-block fs-7">
+              Web, UI/UX Design
+            </span> -->
+            </td>
+            <td>
+              <a href="#" class="text-gray-900 fw-bolder text-hover-primary d-block fs-6">
+                {{item.address}}
+              </a>
+              <!-- <span class="text-muted fw-bold text-muted d-block fs-7">
+              Web, UI/UX Design
+            </span> -->
+            </td>
+            <td>
+              <div class="d-flex justify-content-end flex-shrink-3">
+
+                <a href="#" class="
+                  btn btn-icon btn-bg-light btn-active-color-primary btn-sm
+                  me-1
+                ">
+                  <app-keenicon name="pencil" class="fs-3"></app-keenicon>
+                </a>
+                <a href="#" class="
+              btn btn-icon btn-bg-light btn-active-color-primary btn-sm
+            ">
+                  <app-keenicon name="trash" class="fs-3"></app-keenicon>
+                </a>
+              </div>
+            </td>
+          </tr>
+        </tbody>
       </table>
-  </div>
+    </div>
 
 
-<!-- <h3>Customer List</h3> -->
-
-
-
+    <!-- <h3>Customer List</h3> -->
 
 
 
 
 
 
-<!-- <div class="mb-10" *ngFor="let item of allCustomers"> -->
-  <!--begin::Item-->
-  <!-- <span class="custom-list d-flex align-items-center px-5 py-4"> -->
+
+
+
+    <!-- <div class="mb-10" *ngFor="let item of allCustomers"> -->
+    <!--begin::Item-->
+    <!-- <span class="custom-list d-flex align-items-center px-5 py-4"> -->
     <!--begin::Symbol-->
     <!-- <div class="symbol symbol-40px me-5"> -->
-      <!-- <span class="symbol-label"> -->
-        <!-- <img [src]="" class="h-50 align-self-center" alt="" /> -->
-      <!-- </span> -->
+    <!-- <span class="symbol-label"> -->
+    <!-- <img [src]="" class="h-50 align-self-center" alt="" /> -->
+    <!-- </span> -->
     <!-- </div> -->
     <!--end::Symbol-->
 
     <!--begin::Description-->
     <!-- <div class="d-flex flex-column flex-grow-1"> -->
-      <!--begin::Title-->
-      <!-- <h5 class="custom-list-title fw-bold text-gray-800 mb-1"> -->
-        <!-- {{item.customerName}} -->
-      <!-- </h5> -->
-      <!--end::Title-->
+    <!--begin::Title-->
+    <!-- <h5 class="custom-list-title fw-bold text-gray-800 mb-1"> -->
+    <!-- {{item.customerName}} -->
+    <!-- </h5> -->
+    <!--end::Title-->
 
-      <!--begin::Link-->
-      <!-- <span class="text-gray-500 fw-bold">
+    <!--begin::Link-->
+    <!-- <span class="text-gray-500 fw-bold">
         {{item.mobileNumber}}
       </span> -->
-      <!--end::Link-->
+    <!--end::Link-->
     <!-- </div> -->
     <!--begin::Description-->
-  <!-- </span> -->
-  <!--end::Item-->
-<!-- </div> -->
-<!--end::Items-->
-<!-- </div> -->
-<!--end::Projects-->
+    <!-- </span> -->
+    <!--end::Item-->
+    <!-- </div> -->
+    <!--end::Items-->
+    <!-- </div> -->
+    <!--end::Projects-->
