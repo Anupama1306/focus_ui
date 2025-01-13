@@ -15,7 +15,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class IncidentListComponent implements OnInit{
   formGroup: FormGroup;
-
+    allCustomers: Incident[];
       constructor(   public incidentService:IncidentService) {
  this.formGroup = new FormGroup({
         // customerId:
@@ -36,7 +36,7 @@ export class IncidentListComponent implements OnInit{
         searchIncedent(searchText:string){
           this.incidentService.searchIncident(searchText).pipe(
             tap((res) => {
-              console.log("Res",res);
+              console.log("ResIncident Data",res);
               this.allIncident= res.data;
         }),
             catchError((errorMessage) => {
