@@ -45,16 +45,16 @@
               />
             </div>
           </th>
-          <th class="min-w-150px">Authors</th>
-          <th class="min-w-140px">Company</th>
-          <th class="min-w-120px">Progress</th>
-          <th class="min-w-100px text-end">Actions</th>
+          <th class="min-w-150px">CookBookName</th>
+          <th class="min-w-140px">CategoryName</th>
+          <th class="min-w-120px">MobileNumber</th>
+          <th class="min-w-100px text-end">Priority</th>
         </tr>
       </thead>
       <!-- end::Table head -->
       <!-- begin::Table body -->
       <tbody>
-        <tr>
+        <tr *ngFor="let item of allIncident">
           <td>
             <div
               class="
