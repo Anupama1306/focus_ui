@@ -14,7 +14,7 @@ import { SearchComponent } from 'src/app/_metronic/layout/components/aside/tabs/
    standalone: true,
   imports: [CommonModule, SharedModule,ReactiveFormsModule,   ],
   templateUrl: './customer-list.component.html',
-  
+
 })
 export class CustomerListComponent implements OnInit {
   allCustomers: Customer[] = [];
@@ -53,18 +53,19 @@ export class CustomerListComponent implements OnInit {
     );
   }
 
-  
+
 
   addMember(): void {
+  console.log("Welcome to Add Customer");
     if (this.memberForm.valid) {
       const newMember = this.memberForm.value;  // Get form data
       console.log('New Member:', newMember);
-      
+
       // Call the addCustomer service method to send data to the API
       this.customerService.addCustomer(newMember).subscribe(
         (response) => {
-          console.log('Member added successfully:', response);          
-  
+          console.log('Member added successfully:', response);
+
           // Reset the form and close the modal
           this.memberForm.reset();
           const modalElement = document.getElementById('newMemberModal');
@@ -77,6 +78,9 @@ export class CustomerListComponent implements OnInit {
       );
     }
   }
+
+
+
 
   openModal() {
     // Logic to open modal can go here if needed

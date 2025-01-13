@@ -12,7 +12,7 @@ import { ApiResponse } from '../auth/models/response.model';
 export class IncidentService {
 
 
-  private apiUrl = 'http://localhost:9201/stashook/searchIncident';
+  private apiUrl = 'http://localhost:9200/stashook/searchIncident';
   private authLocalStorageToken = `${environment.appVersion}-${environment.USERDATA_KEY}`;
   constructor(private http: HttpClient) {}
 
