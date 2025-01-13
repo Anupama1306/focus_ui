@@ -1,18 +1,17 @@
-<div style="visibility: hidden;"> {{allCustomers.length}} </div>
+<!-- <div style="visibility: hidden;"> {{allCustomers.length}} </div> -->
 <div class="card-header border-0 pt-5">
-
-
-  <h3 class="card-title align-items-start flex-column">
-    <span class="card-label fw-bolder fs-3 mb-1">Customer Members Statistics</span>
-    <span class="text-muted mt-1 fw-bold fs-7">Over 50 members</span>
+  <h3 class="card-title d-flex justify-content-between align-items-center">
+    <span class="fw-bolder fs-3 mb-1">
+      Customer Members Statistics<br>
+      <span class="text-muted mt-1 fw-bold fs-7"> - Over 50 members</span>
+    </span>   
+    <div class="d-flex align-items-center">
+      <!-- <app-search></app-search> -->
+      <a href="#" class="btn btn-sm btn-light-primary ms-2" data-bs-toggle="modal" data-bs-target="#newMemberModal">
+        New Member
+      </a>
+    </div>
   </h3>
-  <div class="card-toolbar" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover"
-    title="Click to add a user">
-    <a href="#" class="btn btn-sm btn-light-primary">
-      <!-- <app-keenicon name="plus" class="fs-3"></app-keenicon> -->
-      New Member
-    </a>
-  </div>
   <div class="card-body py-3">
     <!-- begin::Table container -->
     <div class="table-responsive">
@@ -100,6 +99,56 @@
           </tr>
         </tbody>
       </table>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="newMemberModal" tabindex="-1" aria-labelledby="newMemberModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h5 class="modal-title" id="newMemberModalLabel">Add New Member</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <!-- Modal Body -->
+          <div class="modal-body">
+            <form [formGroup]="memberForm" (ngSubmit)="addMember()">
+              <div class="mb-3">
+                <label for="customerName" class="form-label">Customer Name</label>
+                <input type="text" class="form-control" id="customerName" formControlName="customerName" maxlength="50"
+                  placeholder="Enter customer's name" required>
+                <small class="text-muted">Max 50 characters</small>
+              </div>
+
+              <div class="mb-3">
+                <label for="mobileNumber" class="form-label">Mobile Number</label>
+                <input type="text" class="form-control" id="mobileNumber" formControlName="mobileNumber" maxlength="15"
+                  placeholder="Enter mobile number" required>
+                <small class="text-muted">Max 15 characters</small>
+              </div>
+
+              <div class="mb-3">
+                <label for="alternateNumber" class="form-label">Alternate Number</label>
+                <input type="text" class="form-control" id="alternateNumber" formControlName="alternateNumber"
+                  maxlength="15" placeholder="Enter alternate number" required>
+                <small class="text-muted">Max 15 characters</small>
+              </div>
+
+              <div class="mb-3">
+                <label for="address" class="form-label">Address</label>
+                <textarea class="form-control" id="address" formControlName="address" placeholder="Enter address"
+                  maxlength="500" rows="3" required></textarea>
+                <small class="text-muted">Max 500 characters</small>
+              </div>
+
+              <div class="modal-footer">
+                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
+                <button [disabled]="memberForm.invalid" type="submit" class="btn btn-primary">Save</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
 
 

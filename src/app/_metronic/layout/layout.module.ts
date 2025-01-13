@@ -98,7 +98,8 @@ const routes: Routes = [
     FormsModule,
     ThemeModeModule,
     SharedModule,
-    CrudModule
+    CrudModule,
+    
 ],
   exports: [RouterModule],
 })

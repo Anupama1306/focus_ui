@@ -14,8 +14,8 @@
     <!--end::Icon-->
     <!--begin::Input-->
     <input type="text" class="search-input form-control form-control-solid ps-13" name="search"
-      [ngModel]="searchText | async" (ngModelChange)="updateSearchText($event)" placeholder="Search..."
-      data-kt-search-element="input">
+  [ngModel]="searchText.value" (ngModelChange)="updateSearchText($event)" placeholder="Search..."
+  data-kt-search-element="input">
     <!--end::Input-->
     <ng-container *ngIf="showLoading">
       <!--begin::Spinner-->

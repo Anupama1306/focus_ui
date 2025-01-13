@@ -12,8 +12,8 @@ import { Customer } from '../auth/models/customer.model';
 export class CustomerService {
   private _errorMsg: any;
 
-  private apiUrl = 'http://localhost:9200/stashook/searchCustomer';
-  private apiaddCustomer = 'http://localhost:9200/stashook/addCustomer';
+  private apiUrl = 'http://localhost:9201/stashook/searchCustomer';
+  private apiaddCustomer = 'http://localhost:9201/stashook/addCustomer';
 
   // private GetCustomerListUrl = 'http://localhost:9200/stashook/getCustomerList';
   private authLocalStorageToken = `${environment.appVersion}-${environment.USERDATA_KEY}`;
@@ -33,20 +33,28 @@ export class CustomerService {
       });
   }
 
-  addCustomer(ApiResponse:any): Observable<any> {
-    var auth = this.getAuthFromLocalStorage();
-       const httpHeaders = new HttpHeaders({
-      Authorization: `${auth?auth.authToken:""}`,
+  addCustomer(ApiResponse: any): Observable<any> {
+    console.log("ApiResponse",ApiResponse);
+    const auth = this.getAuthFromLocalStorage(); // Get token from localStorage
+    const authToken = auth ? auth.authToken : '';
+  
+    if (!authToken) {
+      console.error('No authentication token found!');
+      return of({ error: 'No token provided' }); // Or some error handling here
+    }
+  
+    const httpHeaders = new HttpHeaders({
+      Authorization: `Bearer ${authToken}`,
+      'Content-Type': 'application/json',
     });
-        return this.http.post(`${this.apiaddCustomer,ApiResponse}?`,{headers:HttpHeaders}).pipe(
-          catchError(err => {
-          this._errorMsg.next(err);
-          console.error('FIND ITEMS', err);
-          return of({ items: [], total: 0 });
-        })
-      );
+  
+    return this.http.post(`${this.apiaddCustomer}`, ApiResponse, { headers: httpHeaders }).pipe(
+      catchError(err => {
+        console.error('Error:', err);
+        return of({ error: 'API request failed' });
+      })
+    );
   }
-
 
 private getAuthFromLocalStorage(): AuthModel | undefined {
   try {
