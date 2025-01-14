@@ -6,16 +6,15 @@ import { environment } from 'src/environments/environment';
 import { ApiResponse } from '../auth/models/response.model';
 import { Customer } from '../auth/models/customer.model';
 
+import { environmentpath } from 'src/app/pages/environments/environments';
+// D:\2025\newprojects\focus_ui\src\app\pages\environments\environments.ts';
+
 @Injectable({
   providedIn: 'root'
 })
 export class CustomerService {
   private _errorMsg: any;
 
-  private apiUrl = 'http://localhost:9200/stashook/searchCustomer';
-  private apiaddCustomer = 'http://localhost:9200/stashook/addCustomer';
-
-  // private GetCustomerListUrl = 'http://localhost:9200/stashook/getCustomerList';
   private authLocalStorageToken = `${environment.appVersion}-${environment.USERDATA_KEY}`;
   constructor(private http: HttpClient) {}
 
@@ -25,7 +24,7 @@ export class CustomerService {
       Authorization: `${auth?auth.authToken:""}`,
     });
       // return this.http.post<any[]>(`${this.apiUrl}?search=${search}`,"page",{
-        return this.http.post<ApiResponse>(`${this.apiUrl}?`,{"searchTerm":search,    "page":1,
+        return this.http.post<ApiResponse>(`${environmentpath.searchCustomer}?`,{"searchTerm":search,    "page":1,
           "perPage":15,
           "sort": "createdDate desc"},{
 
@@ -53,7 +52,7 @@ export class CustomerService {
     });
 
 
-    return this.http.post(`${this.apiaddCustomer}`, ApiResponse, { headers: httpHeaders }).pipe(
+    return this.http.post(`${environmentpath.addCustomer}`, ApiResponse, { headers: httpHeaders }).pipe(
       catchError(err => {
         console.error('Error:', err);
         return of({ error: 'API request failed' });

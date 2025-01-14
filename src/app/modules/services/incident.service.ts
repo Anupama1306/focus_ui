@@ -4,7 +4,7 @@ import { Observable, of } from 'rxjs';
 import { AuthModel } from '../auth/models/auth.model';
 import { environment } from 'src/environments/environment';
 import { ApiResponse } from '../auth/models/response.model';
-
+import { environmentpath } from 'src/app/pages/environments/environments';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,6 @@ import { ApiResponse } from '../auth/models/response.model';
 export class IncidentService {
 
 
-  private apiUrl = 'http://localhost:9200/stashook/searchIncident';
   private authLocalStorageToken = `${environment.appVersion}-${environment.USERDATA_KEY}`;
   constructor(private http: HttpClient) {}
 
@@ -22,7 +21,7 @@ export class IncidentService {
       Authorization: `${auth?auth.authToken:""}`,
     });
       // return this.http.post<any[]>(`${this.apiUrl}?search=${search}`,"page",{
-        return this.http.post<ApiResponse>(`${this.apiUrl}?`,{"searchTerm":search,    "page":1,
+        return this.http.post<ApiResponse>(`${environmentpath.searchIncident}?`,{"searchTerm":search,    "page":1,
           "perPage":15,
           "sort": "createdDate desc"},{
 

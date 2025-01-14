@@ -4,8 +4,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { UserModel } from '../../models/user.model';
 import { environment } from '../../../../../environments/environment';
 import { AuthModel } from '../../models/auth.model';
-
-const API_USERS_URL = `${environment.apiUrl}/stashook`;
+import { environmentpath } from 'src/app/pages/environments/environments';
+const API_USERS_URL = `${environmentpath.apiUrl}/stashook`;
 
 @Injectable({
   providedIn: 'root',
