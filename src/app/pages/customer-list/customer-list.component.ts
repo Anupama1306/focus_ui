@@ -1,3 +1,4 @@
+// import { MatPaginator } from '@angular/material/paginator';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ReactiveFormsModule,FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CustomerService } from 'src/app/modules/services/customer.service';
@@ -7,12 +8,12 @@ import * as bootstrap from 'bootstrap';
 import { SharedModule } from 'src/app/_metronic/shared/shared.module';
 import { Customer } from 'src/app/modules/auth/models/customer.model';
 import { SearchComponent } from 'src/app/_metronic/layout/components/aside/tabs/projects-tab/search/search.component';
-
+// import {MatPaginator}from'@angular/material/paginator';
 
 @Component({
   selector: 'app-customer-list',
    standalone: true,
-  imports: [CommonModule, SharedModule,ReactiveFormsModule,   ],
+  imports: [CommonModule, SharedModule,ReactiveFormsModule ],
   templateUrl: './customer-list.component.html',
 
 })
@@ -27,6 +28,11 @@ export class CustomerListComponent implements OnInit {
   };
 
   @ViewChild('modal') private modalComponent: ModalComponent;
+
+
+//   @ViewChild('paginator')
+// paginator!: MatPaginator;
+
 
   constructor(public customerService: CustomerService, private fb: FormBuilder) {}
 
