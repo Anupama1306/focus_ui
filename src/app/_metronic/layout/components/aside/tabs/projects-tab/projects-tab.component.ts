@@ -23,15 +23,16 @@ import { CustomerService } from 'src/app/modules/services/customer.service';
 })
 export class ProjectsTabComponent implements OnInit {
   allCustomers: ReadonlyArray<Customer> = [];
+  pages:number=1;
   constructor(   public customerService: CustomerService) {}
 
   ngOnInit(): void {
-console.log(this.searchCustomers(""));
-    this.searchCustomers("");
+console.log(this.searchCustomers("",));
+    this.searchCustomers("",);
   }
 
-  searchCustomers(searchText:string){
-    this.customerService.searchCustomer(searchText).pipe(
+  searchCustomers(searchText:string,){
+    this.customerService.searchCustomer(searchText,this.pages).pipe(
       tap((res) => {
         console.log("Res",res);
         this.allCustomers= res.data;

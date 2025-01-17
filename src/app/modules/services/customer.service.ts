@@ -18,13 +18,14 @@ export class CustomerService {
   private authLocalStorageToken = `${environment.appVersion}-${environment.USERDATA_KEY}`;
   constructor(private http: HttpClient) {}
 
-  searchCustomer(search: string = ''): Observable<ApiResponse> {
+  searchCustomer(search: string = '',page:number): Observable<ApiResponse> {
+    console.log("page",page)
     var auth = this.getAuthFromLocalStorage();
        const httpHeaders = new HttpHeaders({
       Authorization: `${auth?auth.authToken:""}`,
     });
       // return this.http.post<any[]>(`${this.apiUrl}?search=${search}`,"page",{
-        return this.http.post<ApiResponse>(`${environmentpath.searchCustomer}?`,{"searchTerm":search,    "page":1,
+        return this.http.post<ApiResponse>(`${environmentpath.searchCustomer}?`,{"searchTerm":search,    "page":page,
           "perPage":15,
           "sort": "createdDate desc"},{
 

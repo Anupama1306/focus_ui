@@ -15,6 +15,7 @@ import { CustomerService } from 'src/app/modules/services/customer.service';
   templateUrl: './customer-tab.component.html',
 })
 export class CustomerTabComponent implements OnInit {
+  pages:number=1;
   formGroup: FormGroup;
   @ViewChild('modal') private modalComponent: ModalComponent;
   isLoading = false;
@@ -52,7 +53,7 @@ export class CustomerTabComponent implements OnInit {
 
 
   searchCustomers(searchText:string){
-    this.customerService.searchCustomer(searchText).pipe(
+    this.customerService.searchCustomer(searchText,this.pages).pipe(
       tap((res) => {
         console.log("Res",res);
         this.allCustomers= res.data;
