@@ -7,18 +7,13 @@
     <span class="card-label fw-bolder fs-3 mb-1">Incident Members Statistics</span>
     <span class="text-muted mt-1 fw-bold fs-7">Over 50 members</span>
   </h3>
-  <div
-    class="card-toolbar"
-    data-bs-toggle="tooltip"
-    data-bs-placement="top"
-    data-bs-trigger="hover"
-    title="Click to add a user"
-  >
-    <a href="#" class="btn btn-sm btn-light-primary">
-      <app-keenicon name="plus" class="fs-3"></app-keenicon>
-      New Member
-    </a>
+  <div class="d-flex align-items-center">
+    <!-- newMemberModal -->
+  <a href="#" class="btn btn-sm btn-light-primary ms-2" data-bs-toggle="modal" data-bs-target="#newIncidentModal">Add
+    Incident
+  </a>
   </div>
+
 </div>
 <!-- end::Header -->
 <!-- begin::Body -->
@@ -176,26 +171,60 @@
 
 
 
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
 
-  Launch demo modal
-</button>
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
+<div class="modal fade" id="newIncidentModal" tabindex="-1" aria-labelledby="newIncidentModal" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
+      <!-- Modal Header -->
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="newIncidentModal">Add Incident</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
+      <!-- Modal Body -->
       <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <form incidentForm="incidentForm" (ngSubmit)="addIncident()">
+          <div class="mb-3">
+            <label for="customerId" class="form-label">Customer ID</label>
+            <input type="text" class="form-control" id="customerId" formControlName="customerId"
+              placeholder="Enter customer's Id" required>
+            <small class="text-muted">Customer's Id Required</small>
+            <div
+              *ngIf="incidentForm.get('customerId')?.hasError('pattern') && incidentForm.get('customerId')?.touched">
+              <small class="text-danger">Customer 's Id Required.</small>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="supportType" class="form-label"> SupportType : </label>
+            <!-- <input type="text" class="form-control" id="mobileNumber" formControlName="mobileNumber" maxlength="15"
+              placeholder="Enter mobile number" required> -->
+              <select name="supportType" id="supportType" formControlName="supportType">
+                <option value="internal">Internal</option>
+                <option value="external">External</option>
+                 </select><br>
+              <small class="text-muted">Please Select One</small>
+            <!-- <div
+              *ngIf="incidentForm.get('supportType')?.hasError('pattern') && incidentForm.get('supportType')?.touched">
+              <small class="text-danger">Mobile number must contain only digits (0-9).</small>
+            </div> -->
+          </div>
+
+          <div class="mb-3">
+            <label for="taskStatus" class="form-label">Task Status</label>
+            <select name="taskStatus" id="taskStatus" formControlName="taskStatus">
+              <option value="open">Open</option>
+              <option value="reopen">ReOpen</option>
+               </select><br>
+            <small class="text-muted">Please Select One</small>
+
+          </div>
+
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
+            <button  type="submit" class="btn btn-primary">Save</button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
