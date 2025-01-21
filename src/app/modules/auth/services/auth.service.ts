@@ -1,11 +1,13 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { Observable, BehaviorSubject, of, Subscription } from 'rxjs';
-import { map, catchError, switchMap, finalize } from 'rxjs/operators';
+import { map, catchError, switchMap, finalize, tap } from 'rxjs/operators';
 import { UserModel } from '../models/user.model';
 import { AuthModel } from '../models/auth.model';
 import { AuthHTTPService } from './auth-http';
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { environmentpath } from 'src/app/pages/environments/environments';
 
 export type UserType = UserModel| undefined;
 
@@ -33,7 +35,8 @@ export class AuthService implements OnDestroy {
 
   constructor(
     private authHttpService: AuthHTTPService,
-    private router: Router
+    private router: Router,
+    private http: HttpClient,
   ) {
     this.isLoadingSubject = new BehaviorSubject<boolean>(false);
     this.currentUserSubject = new BehaviorSubject<UserType>(undefined);
@@ -43,14 +46,32 @@ export class AuthService implements OnDestroy {
     this.unsubscribe.push(subscr);
   }
 
+  private menuSubject = new BehaviorSubject<any[]>([]); // Subject to store menu items
+  menu$ = this.menuSubject.asObservable(); // Observable to be subscribed by components
+
   // public methods
   login(email: string, password: string): Observable<any> {
+    console.log("auth",email,password);
     this.isLoadingSubject.next(true);
     return this.authHttpService.login(email, password).pipe(
-      map((auth: UserType) => {
+      map((auth: UserType| undefined) => {
         
+        if (!auth) {
+          throw new Error("Authentication response is undefined."); // Guard against undefined auth
+        }
         const result = this.setAuthFromLocalStorage(auth);
         console.log("auth--",auth);
+        console.log("result--",result);
+       
+      // Extract roles and convert to a comma-separated string
+      const rolesArray = auth.user?.roles || [];
+      const roles = rolesArray.join(', '); // Convert array to "Admin, Employee"
+      console.log("roles--", roles);
+
+       // Fetch menu after successful login
+       this.getmenu(roles); 
+
+        
         return auth;
       }),
       switchMap(() => this.getUserByToken()),
@@ -61,6 +82,37 @@ export class AuthService implements OnDestroy {
       finalize(() => this.isLoadingSubject.next(false))
     );
   }
+  
+  // getmenu(role: any): Observable<any> {
+  //   console.log("roles",role);
+  //   return this.http.post(`${environmentpath.menuUrl}`, {roles:role})
+
+  // }
+
+  getmenu(role: string): void {
+    console.log('Roles received:', role);
+    this.http
+      .post(`${environmentpath.menuUrl}`, { roles: role })
+      .pipe(
+        tap((response: any) => {
+          console.log('Menu response:', response); // Check the structure
+          if (response && response.length > 0) {
+            // Emit the received menu items
+            this.menuSubject.next(response); 
+          } else {
+            this.menuSubject.next([]); // Emit empty array if no data
+          }
+        }),
+        catchError((error) => {
+          console.error('Error fetching menu:', error);
+          this.menuSubject.next([]); // Emit empty array on error
+          return of([]); // Return an empty array to handle errors gracefully
+        })
+      )
+      .subscribe();
+  }
+
+
 
   logout() {
     localStorage.removeItem(this.authLocalStorageToken);

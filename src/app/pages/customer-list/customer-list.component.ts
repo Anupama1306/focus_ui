@@ -18,12 +18,13 @@ import { MatPaginatorModule } from '@angular/material/paginator';
   selector: 'app-customer-list',
    standalone: true,
    encapsulation: ViewEncapsulation.None,  
-  imports: [CommonModule, SharedModule,ReactiveFormsModule ,MatPaginatorModule ],
+  imports: [CommonModule, SharedModule,  ReactiveFormsModule ,MatPaginatorModule],
   
   templateUrl: './customer-list.component.html',
  
 })
 export class CustomerListComponent implements OnInit {
+ 
   allCustomers: Customer[] = [];
   displayedCustomers: Customer[] = []; 
   allCustomersPagination:any;

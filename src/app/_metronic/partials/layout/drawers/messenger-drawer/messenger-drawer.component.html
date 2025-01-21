@@ -11,6 +11,7 @@
   data-kt-drawer-close="#kt_drawer_chat_close"
 >
   <div class="card w-100 rounded-0" id="kt_drawer_chat_messenger">
+    <!-- Header -->
     <div class="card-header pe-5" id="kt_drawer_chat_messenger_header">
       <div class="card-title">
         <div class="d-flex justify-content-center flex-column me-3">
@@ -35,6 +36,7 @@
         </div>
       </div>
       <div class="card-toolbar">
+        <!-- Menu Button -->
         <div class="me-2">
           <button
             class="btn btn-sm btn-icon btn-active-light-primary"
@@ -45,6 +47,15 @@
             <i class="bi bi-three-dots fs-3"></i>
           </button>
         </div>
+        <!-- Logout Button -->
+        <button
+        class="btn btn-sm btn-active-light-danger d-flex align-items-center"
+        id="kt_drawer_chat_logout"
+        (click)="onLogout()"
+      >
+        <i class="bi bi-box-arrow-right fs-3 me-2"></i> Logout
+      </button>
+        <!-- Close Button -->
         <div
           class="btn btn-sm btn-icon btn-active-light-primary"
           id="kt_drawer_chat_close"
@@ -57,6 +68,7 @@
         </div>
       </div>
     </div>
+    <!-- Chat Body -->
     <app-chat-inner [isDrawer]="true"></app-chat-inner>
   </div>
 </div>

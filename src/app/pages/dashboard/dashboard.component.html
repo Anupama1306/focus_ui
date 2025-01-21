@@ -1,2 +1,122 @@
+<!-- <div class="d-flex align-items-end ms-3 ">
+  
+    <div class="btn-group btn-group-toggle p-3 ml-auto" data-toggle="buttons">
+      <label
+        class="btn"
+        [ngClass]="{
+          'unclick': selectedToggle !== 'P4',
+          'click': selectedToggle === 'P4'
+        }"
+        [class.active]="selectedToggle === 'P4'"
+        (click)="onToggleClick('P4')"
+      >
+        <input type="radio" name="options" id="P4" /> 4H
+      </label>
+  
+      <label
+        class="btn"
+        [ngClass]="{
+          'unclick': selectedToggle !== 'P6',
+          'click': selectedToggle === 'P6'
+        }"
+        [class.active]="selectedToggle === 'P6'"
+        (click)="onToggleClick('P6')"
+      >
+        <input type="radio" name="options" id="option2" /> 6H
+      </label>
+  
+      <label
+        class="btn"
+        [ngClass]="{
+          'unclick': selectedToggle !== 'P8',
+          'click': selectedToggle === 'P8'
+        }"
+        [class.active]="selectedToggle === 'P8'"
+        (click)="onToggleClick('P8')"
+      >
+        <input type="radio" name="options" id="option3" /> 8H
+      </label>
+    </div>
+  </div> -->
+
+  <!-- <div class="d-flex align-items-end ms-3">
+   
+    <div class="btn-group btn-group-toggle p-3 ml-auto" data-toggle="buttons">
+      
+     
+      <label
+        class="btn"
+        [ngClass]="{
+          'unclick': selectedToggle !== 'P4',
+          'click': selectedToggle === 'P4'
+        }"
+        [class.active]="selectedToggle === 'P4'"
+        (click)="onToggleClick('P4')"
+      >
+        <input type="radio" name="options" id="P4" hidden /> 4H
+      </label>
+  
+     
+      <label
+        class="btn"
+        [ngClass]="{
+          'unclick': selectedToggle !== 'P6',
+          'click': selectedToggle === 'P6'
+        }"
+        [class.active]="selectedToggle === 'P6'"
+        (click)="onToggleClick('P6')"
+      >
+        <input type="radio" name="options" id="option2" hidden /> 6H
+      </label>
+  
+    
+      <label
+        class="btn"
+        [ngClass]="{
+          'unclick': selectedToggle !== 'P8',
+          'click': selectedToggle === 'P8'
+        }"
+        [class.active]="selectedToggle === 'P8'"
+        (click)="onToggleClick('P8')"
+      >
+        <input type="radio" name="options" id="option3" hidden /> 8H
+      </label>
+  
+    </div>
+  </div> -->
+
+  <div class="d-flex justify-content-end fw-bold ms-3">
+    <!-- Mark Attendance Text -->
+    <div class="d-flex align-items-center">
+      <span>Mark Attendance</span>
+    </div>
+  
+    <!-- Button Group -->
+    <div class="d-flex justify-content-end">
+      <!-- Button for 4H -->
+      <button 
+        class="btn btn-sm btn-light-primary ms-2" 
+        (click)="onToggleClick('P4')"
+      >
+        4H
+      </button>
+  
+      <!-- Button for 6H -->
+      <button 
+        class="btn btn-sm btn-light-primary ms-2" 
+        (click)="onToggleClick('P6')"
+      >
+        6H
+      </button>
+  
+      <!-- Button for 8H -->
+      <button 
+        class="btn btn-sm btn-light-primary ms-2" 
+        (click)="onToggleClick('P8')"
+      >
+        8H
+      </button>
+    </div>
+  </div>
 <app-customer-list></app-customer-list>
 <app-incident-list></app-incident-list>

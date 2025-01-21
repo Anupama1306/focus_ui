@@ -24,6 +24,7 @@ export class UserModel extends AuthModel {
   fatherName:string;
   spouseName:string;
   sex:string;
+  roles:string[];
   
   userImage:string;
   userStatus:string;
@@ -54,6 +55,8 @@ export class UserModel extends AuthModel {
   itRecord:UserITModel;
   hrRecord:UserHRModel;
   operationalRecord:UserOperationalModel;
+
+  
 
 }
 
