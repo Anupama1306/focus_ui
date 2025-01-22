@@ -7,7 +7,8 @@ import { InlineSVGModule } from 'ng-inline-svg-2/lib_commonjs/inline-svg.module'
 
 @Component({
   selector: 'app-search',
-  // standalone: true,
+ 
+  //  standalone: true,
   // imports: [InlineSVGModule, /* other imports */],
   templateUrl: './search.component.html',
   
