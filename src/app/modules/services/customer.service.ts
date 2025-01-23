@@ -53,7 +53,8 @@ export class CustomerService {
     });
 
 
-    return this.http.post(`${environmentpath.addCustomer}`, ApiResponse, { headers: httpHeaders }).pipe(
+    return this.http.post(`${environmentpath.addCustomer}`, ApiResponse, 
+      { headers: httpHeaders }).pipe(
       catchError(err => {
         console.error('Error:', err);
         return of({ error: 'API request failed' });

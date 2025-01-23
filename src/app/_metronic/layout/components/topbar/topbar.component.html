@@ -43,7 +43,6 @@
 
 </div>
 </nav>  -->
-
 <nav class="navbar navbar-expand-lg d-flex justify-content-between align-items-start" style="font-size: 16px;">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -53,36 +52,33 @@
     <ul class="navbar-nav">
       <li *ngFor="let menuItem of menuItems" class="nav-item" 
           [ngClass]="{ 'has-submenu': menuItem.children?.length > 0 }"
-          (mouseenter)="toggleSubMenu(menuItem, true)" 
-          (mouseleave)="toggleSubMenu(menuItem, false)">
+          (mouseenter)="toggleSubMenu(menuItem)" 
+          (mouseleave)="toggleSubMenu(menuItem)">
         <!-- Main menu item -->
         <a class="nav-link btn btn-active-primary btn-color-gray-500 fw-bold"
            [routerLink]="menuItem.actionURL"
-          
            (click)="openSubMenu(menuItem)"  
            style="font-size: 16px;">
           <i [class]="menuItem.cssClassIcon"></i> {{ menuItem.menuName }}
         </a>
-        <!-- [title]="menuItem.menuName" -->
 
         <!-- Submenu (inside a card-like container) -->
         <div *ngIf="menuItem.children?.length > 0 && menuItem.isOpen" class="submenu-card mt-0" style="position: absolute; left: 2; z-index: 100;">
           <div class="card mt-0" style="width: 200px;">
             <div class="card-body">
               <ul class="navbar-nav">
-                <li *ngFor="let subMenu of menuItem.children" class="nav-item">
-                  <a class=" nav-link fw-bold" [routerLink]="subMenu.actionURL" [title]="subMenu.menuName" 
-                     (click)="onSubMenuClick($event)" 
+                <li class="nav-item" >
+                  <a *ngFor="let subMenu of menuItem.children" class="nav-link fw-bold"
+                     [routerLink]="subMenu.actionURL" 
+                     [title]="subMenu.menuName"
+                     (click)="onSubMenuClick(subMenu)"
                      [ngStyle]="{
-                      'color': isHovered ? '#04b440' : 'gray', 
-                    
-                    }"
-                    (mouseenter)="isHovered = true" 
-                    (mouseleave)="isHovered = false"
-                     >
-                    <!-- Display icon dynamically -->
+                       'color': activeSubMenu === subMenu.menuId ? '#04b440' : (hoveredSubMenu === subMenu.menuId ? '#04b440' : 'gray')
+                     }"
+                     (mouseenter)="onSubMenuHover(subMenu.menuId)"
+                     (mouseleave)="onSubMenuLeave()">
                     <i [class]="subMenu.cssClassIcon.trim()"></i> 
-                     {{ subMenu.menuName }}
+                    {{ subMenu.menuName }}
                   </a>
                 </li>
               </ul>
@@ -102,8 +98,6 @@
   </div>
   <!--end::Menu wrapper-->
 </div>
-
-
 
 <!--end::Chat-->
 

@@ -6,7 +6,7 @@ import { AuthModel } from '../models/auth.model';
 import { AuthHTTPService } from './auth-http';
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environmentpath } from 'src/app/pages/environments/environments';
 
 export type UserType = UserModel| undefined;
@@ -91,8 +91,16 @@ export class AuthService implements OnDestroy {
 
   getmenu(role: string): void {
     console.log('Roles received:', role);
+   // Get the auth token from localStorage
+  const auth = this.getAuthFromLocalStorage(); // Assuming this method returns the auth object
+ 
+  
+  // Set up HTTP headers with Authorization
+  const httpHeaders = new HttpHeaders({
+    Authorization: `${auth?auth.authToken:""}`,
+  });
     this.http
-      .post(`${environmentpath.menuUrl}`, { roles: role })
+      .post(`${environmentpath.menuUrl}`, { roles: role },{ headers: httpHeaders })
       .pipe(
         tap((response: any) => {
           console.log('Menu response:', response); // Check the structure

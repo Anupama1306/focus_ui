@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AttendanceService } from 'src/app/modules/services/attendance.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,22 +11,17 @@ export class DashboardComponent implements OnInit {
   mode="WFH";
 
   
-  constructor() {}
+  constructor(private attendanceservice:AttendanceService,) {}
 
   ngOnInit(): void {}
   onToggleClick(option: string) {
     this.selectedToggle = option;
     console.log('Selected Option:', this.selectedToggle);
-    // // this.attendanceservice.addattendance(this.selectedToggle,this.mode)
-    // .subscribe((res)=>{
-    //   console.log('onToggleClick',res)
-    //   Swal.fire({
-    //     text:
-    //       res.message,
-    //     confirmButtonColor:'rgb(133, 187, 131)',
-    //     // background: '#efc96a',
-    //   });
-    // })
+     this.attendanceservice.addAttendance(this.selectedToggle,this.mode)
+    .subscribe((res: any)=>{
+      console.log('onToggleClick',res)
+      
+    })
 
   }
 }
