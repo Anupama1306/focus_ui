@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { catchError, of, tap } from 'rxjs';
 import { Customer } from 'src/app/modules/auth/models/customer.model';
 import { ApiResponse } from 'src/app/modules/auth/models/response.model';
+import { CustomerService } from 'src/app/pages/ticket/services/customer.service';
 
-import { CustomerService } from 'src/app/modules/services/customer.service';
 // type Customer = {
 
 

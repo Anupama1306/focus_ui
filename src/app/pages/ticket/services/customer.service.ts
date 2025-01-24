@@ -1,12 +1,11 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, of } from 'rxjs';
-import { AuthModel } from '../auth/models/auth.model';
 import { environment } from 'src/environments/environment';
-import { ApiResponse } from '../auth/models/response.model';
-import { Customer } from '../auth/models/customer.model';
 
 import { environmentpath } from 'src/app/pages/environments/environments';
+import { ApiResponse } from 'src/app/modules/auth/models/response.model';
+import { AuthModel } from 'src/app/modules/auth/models/auth.model';
 // D:\2025\newprojects\focus_ui\src\app\pages\environments\environments.ts';
 
 @Injectable({

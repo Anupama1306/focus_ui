@@ -1,5 +1,7 @@
 <div [ngClass]="headerContainerCssClasses" class="d-flex align-items-center justify-content-between"
   id="kt_header_container">
+  <app-topbar class="d-flex flex-shrink-0"></app-topbar>
+
   <app-page-title #ktPageTitle
     class="page-title d-flex flex-column align-items-start justify-content-center flex-wrap mt-n5 mt-lg-0 me-lg-2 pb-2 pb-lg-0"
     data-kt-swapper="true" data-kt-swapper-mode="prepend"
@@ -19,5 +21,4 @@
     <!--end::Logo-->
   </div>
   <!-- end::Wrapper -->
-  <app-topbar class="d-flex flex-shrink-0"></app-topbar>
 </div>

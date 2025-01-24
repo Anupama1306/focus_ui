@@ -6,8 +6,8 @@ import { ModalComponent, ModalConfig } from 'src/app/_metronic/partials';
 import { Customer } from 'src/app/modules/auth/models/customer.model';
 import { PageSizes } from 'src/app/modules/auth/models/paginator.model';
 import { ApiResponse } from 'src/app/modules/auth/models/response.model';
+import { CustomerService } from 'src/app/pages/ticket/services/customer.service';
 
-import { CustomerService } from 'src/app/modules/services/customer.service';
 
 @Component({
   selector: 'app-customer-tab',

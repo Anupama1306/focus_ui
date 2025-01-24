@@ -1,11 +1,11 @@
-import { IncidentService } from './../../modules/services/incident.service';
 import { Component, OnInit } from '@angular/core';
-import { SharedModule } from "../../_metronic/shared/shared.module";
 import { Incident } from 'src/app/modules/auth/models/incident.model';
 import { CommonModule } from '@angular/common';
 import { catchError, of, tap } from 'rxjs';
 import { FormControl, FormGroup } from '@angular/forms';
 import * as bootstrap from 'bootstrap';
+import { SharedModule } from 'src/app/_metronic/shared/shared.module';
+import { IncidentService } from '../services/incident.service';
 
 @Component({
   selector: 'app-incident-list',

@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, Observable, of } from 'rxjs';
-import { AuthModel } from '../auth/models/auth.model';
+import { AuthModel } from '../../../modules/auth/models/auth.model';
 import { environment } from 'src/environments/environment';
-import { ApiResponse } from '../auth/models/response.model';
+import { ApiResponse } from '../../../modules/auth/models/response.model';
 import { environmentpath } from 'src/app/pages/environments/environments';
 
 @Injectable({

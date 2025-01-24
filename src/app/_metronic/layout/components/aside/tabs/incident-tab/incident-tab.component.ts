@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IncidentService } from 'src/app/modules/services/incident.service';
+import { IncidentService } from 'src/app/pages/ticket/services/incident.service';
 import { catchError, of, tap } from 'rxjs';
 import { Customer } from 'src/app/modules/auth/models/customer.model';
 import {Incident} from 'src/app/modules/auth/models/incident.model'

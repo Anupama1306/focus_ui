@@ -1,7 +1,6 @@
 // import { MatPaginator } from '@angular/material/paginator';
 import { ChangeDetectorRef, Component, OnInit, ViewChild, ViewEncapsulation,  } from '@angular/core';
 import { ReactiveFormsModule,FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { CustomerService } from 'src/app/modules/services/customer.service';
 import { CommonModule } from '@angular/common';
 import { ModalComponent, ModalConfig } from 'src/app/_metronic/partials';
 import * as bootstrap from 'bootstrap';
@@ -13,6 +12,7 @@ import { SearchComponent } from 'src/app/_metronic/layout/components/aside/tabs/
 import { Observable } from 'rxjs';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { CustomerService } from '../services/customer.service';
 
 @Component({
   selector: 'app-customer-list',

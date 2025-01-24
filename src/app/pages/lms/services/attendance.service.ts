@@ -1,9 +1,9 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
+import { AuthModel } from 'src/app/modules/auth/models/auth.model';
 import { environmentpath } from 'src/app/pages/environments/environments';
 import { environment } from 'src/environments/environment';
-import { AuthModel } from '../auth/models/auth.model';
 
 @Injectable({
   providedIn: 'root'
